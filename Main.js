@@ -9,15 +9,18 @@ var izzyTotal = 0
 var izzyLPS = 1
 var cookie = document.cookie
 
-/*function getCookie() {
-	console.log(cookie);
+function loadSave() {
+	if(localStorage.linesofcode) {
+		savedPoints = localStorage.linesofcode;
+		console.log(savedPoints);
+		points = parseInt(savedPoints);
+		console.log(points / 1)
+	}
+	else {
+
+	}
 }
 
-function initial() {
-	var cookiestuff = document.cookie;
-	console.log("jazz");
-}
-*/
 function addPoints() {
 	points = points + 1;
 	//console.log(getCookie("points"))l;
@@ -50,6 +53,11 @@ window.setInterval(function() {
 	  points = (points + (davidTotal * davidLPS) + (izzyTotal * izzyLPS));
 		totalLPS = ((davidTotal * davidLPS) + (izzyTotal * izzyLPS));
 		document.getElementById("codepersec").innerHTML = totalLPS.toFixed(1) + ' Lines per second'
-		document.getElementById("points").innerHTML = (points).toFixed(1) + ' Lines of code';
+		document.getElementById("points").innerHTML = points.toFixed(1) + ' Lines of code';
 		document.cookie = "points=" + points.toFixed(1);
 }, 1000);
+
+window.setInterval(function() {
+	localStorage.setItem("linesofcode", points);
+	console.log("it works")
+}, 15000);
