@@ -8,7 +8,7 @@ var izzyPrice = 100
 var izzyTotal = 0
 var izzyLPS = 1
 
-function loadSave() {
+function loadSave() { //loads the saved values from local storage
 	if(localStorage.linesofcode) {
 		savedPoints = localStorage.linesofcode;
 		//console.log(savedPoints);
