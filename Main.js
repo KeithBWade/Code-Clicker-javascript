@@ -158,7 +158,9 @@ function davidRedBull() {
 		davidredbull = true;
 		localStorage.setItem("davidredbull", true);
 		davidLPS = davidLPS * 2;
-		document.getElementsByClassName("davidRedbull").style.display = "none";
-
+		var davidredbullElements = document.getElementsByClassName("davidRedbull");
+		for (i = 0; i < davidredbullElements.length; i++){
+			davidredbullElements[i].style.display = "none";
+		}
 	}
 }
