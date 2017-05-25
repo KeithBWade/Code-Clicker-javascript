@@ -9,7 +9,7 @@
 			<button class="tablinks" onclick="openTab(event, 'Main')">
 				Main Page
 			</button>
-			<button class="tablinks" onclick="openTab(event, 'Upgrades')">
+			<button class="tablinks" onclick="openTab(event, 'Upgrades');checkUpgrades()">
 				Upgrades
 			</button>
 		</div>
@@ -32,9 +32,12 @@
 			<br>
 		</div>
 		<div id="Upgrades" class="tabcontent">
-			<p>
-				test
-			</p>
+			<div id="davidUpgrades" class="upgrades">
+				<div id="davidRedbull">
+					<button id="redbull" class="davidRedbull" onclick="davidRedbull()">Buy david redbull for 100 Lines of code</button>
+					<p class="davidRedbull">Makes david write twice as many lines of code</p>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

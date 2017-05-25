@@ -28,3 +28,7 @@ div.tabs button:active {
     border: 1px solid #ccc;
     border-top: none;
 }
+
+.davidRedbull {
+    display: none;
+}

@@ -8,7 +8,7 @@ function openTab(evt, pageName){
 		tabcontent[i].style.display = "none";
 	}
 
-	tablinks = document.getElementsByClassName("tablinks")
+	tablinks = document.getElementsByClassName("tablinks");
 	for(i = 0; i < tablinks.length; i++) {
 		tablinks[i].className = tablinks[i].className.replace(" active", "");
 	}
@@ -37,36 +37,44 @@ function loadSave() { //loads the saved values from local storage
 	if(localStorage.linesofcode) { //checks for a local save
 		savedPoints = localStorage.linesofcode;
 		points = parseInt(savedPoints);
-		savedDavids = localStorage.davids;
-		davidTotal = parseInt(savedDavids);
-		updateDavids();
-		savedIzzys = localStorage.izzys;
-		izzyTotal = parseInt(savedIzzys);
-		updateIzzys();
-		savedNicoles = localStorage.nicoles;
-		nicoleTotal = parseInt(savedNicoles);
-		updateNicoles()
+
+		loadDavids();
+
+		loadIzzys();
+
+		loadNicoles()
 	}
 	else {
 
 	}
 }
 
-function updateDavids() { //updates the HTML elements related to David affter loading
+function loadDavids() { //updates the HTML elements related to David affter loading
+	savedDavids = localStorage.davids;
+	davidTotal = parseInt(savedDavids);
 	davidPrice = Math.ceil(10 * 1.15**davidTotal);
+	davidRedbull = (localStorage.davidredbull == 'true')
+	console.log(davidRedbull)
+	if(davidRedbull){
+		davidLPS = davidLPS * 2
+	}
 	document.getElementById("david").innerHTML = 'Buy a David for ' + davidPrice + ' Lines of code'
 	document.getElementById("davidAmmount").innerHTML = 'you have ' + davidTotal + ' Davids'
 	document.getElementById("davidProduce").innerHTML = 'Writing ' + (davidLPS * davidTotal).toFixed(1) + ' lines of code per second'
 }
 
-function updateIzzys() { //updates the HTML elements related to izzy affter loading
+function loadIzzys() { //updates the HTML elements related to izzy affter loading
+	savedIzzys = localStorage.izzys;
+	izzyTotal = parseInt(savedIzzys);
 	izzyPrice = Math.ceil(100 * 1.15**izzyTotal);
 	document.getElementById("izzy").innerHTML = 'Buy an izzy for ' + izzyPrice + ' Lines of code'
 	document.getElementById("izzyAmmount").innerHTML = 'you have ' + izzyTotal + ' Izzys'
 	document.getElementById("izzyProduce").innerHTML = 'Writing ' + (izzyLPS * izzyTotal).toFixed(1) + ' lines of code per second'
 }
 
-function updateNicoles() {
+function loadNicoles() {
+	savedNicoles = localStorage.nicoles;
+	nicoleTotal = parseInt(savedNicoles);
 	nicolePrice = Math.ceil(1100 * 1.15**nicoleTotal);
 	document.getElementById("nicole").innerHTML = 'Buy a Nicole for ' + nicolePrice + ' Lines of code';
 	document.getElementById("nicoleAmmount").innerHTML = 'you have ' + nicoleTotal + ' Nicoles';
@@ -129,9 +137,26 @@ window.setInterval(function() { //Saves game data every 15 seconds
 	localStorage.setItem("davids", davidTotal);
 	localStorage.setItem("izzys", izzyTotal);
 	localStorage.setItem("nicoles", nicoleTotal);
-	console.log("Game Saved")
+	console.log("Game Saved");
 }, 15000);
 
 /*
 ----This section represents the Upgrades page of the javascript----
 */
+function checkUpgrades() {
+	if(davidTotal >= 1 && davidRedBull != true) {
+		document.getElementsByClassName("davidRedbull").style.display = "inline";
+	}
+}
+
+function davidRedbull() {
+	var davidredbullCost = 100
+	if(points >= davidredbullCost) {
+		points = points - davidredbullCost;
+		davidredbull = true;
+		localStorage.setItem("davidredbull", true);
+		davidLPS = davidLPS * 2;
+		document.getElementsByClassName("davidRedbull").style.display = "none";
+
+	}
+}
