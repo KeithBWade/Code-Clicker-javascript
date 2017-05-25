@@ -1,3 +1,24 @@
+/*
+----basic layout javascript programming----
+*/
+function openTab(evt, pageName){
+	var i, tabcontent, tablinks
+	tabcontent = document.getElementsByClassName("tabcontent")
+	for(i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	}
+
+	tablinks = document.getElementsByClassName("tablinks")
+	for(i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" active", "");
+	}
+
+	document.getElementById(pageName).style.display = "block";
+	evt.currentTarget.className += " active";
+}
+/*
+----Beginign of Game section of the javascript----
+*/
 //Initialize all global variables that are relevent to the game
 var totalLPS = 0;
 var points = 0;
@@ -92,7 +113,7 @@ function buyNicole() {
 }
 
 window.setInterval(function() { //Adds together all the Lines of Code and then updates the elements in the HTML
-	  points = (points + (davidTotal * davidLPS) + (izzyTotal * izzyLPS) + (nicoleTotal * nicoleLPS);
+	  points = (points + (davidTotal * davidLPS) + (izzyTotal * izzyLPS) + (nicoleTotal * nicoleLPS));
 		totalLPS = ((davidTotal * davidLPS) + (izzyTotal * izzyLPS) + (nicoleLPS * nicoleTotal));
 		document.getElementById("codepersec").innerHTML = totalLPS.toFixed(1) + ' Lines per second'
 		document.getElementById("points").innerHTML = points.toFixed(1) + ' Lines of code';
