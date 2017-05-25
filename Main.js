@@ -73,12 +73,6 @@ function updateNicoles() {
 	document.getElementById("nicoleProduce").innerHTML = 'Writing ' + (nicoleLPS * nicoleTotal).toFixed(1) + ' Lines of code per second';
 }
 
-function enterCheck(key) {
-	var entercheckKeycode;
-	if (window.event) entercheckKeycode = window.event.keyCode;
-	if (window.event.keyCode != 13) return false;
-}
-
 function addPoints() { //function for clicking
 	points = points + 1;
 	//console.log(getCookie("points"))l;
