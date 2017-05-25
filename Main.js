@@ -17,7 +17,7 @@ function openTab(evt, pageName){
 	evt.currentTarget.className += " active";
 }
 /*
-----Beginign of Game section of the javascript----
+----Beginign of MainPage section of the javascript----
 */
 //Initialize all global variables that are relevent to the game
 var totalLPS = 0;
@@ -73,6 +73,12 @@ function updateNicoles() {
 	document.getElementById("nicoleProduce").innerHTML = 'Writing ' + (nicoleLPS * nicoleTotal).toFixed(1) + ' Lines of code per second';
 }
 
+function enterCheck(key) {
+	var entercheckKeycode;
+	if (window.event) entercheckKeycode = window.event.keyCode;
+	if (window.event.keyCode != 13) return false;
+}
+
 function addPoints() { //function for clicking
 	points = points + 1;
 	//console.log(getCookie("points"))l;
@@ -120,6 +126,10 @@ window.setInterval(function() { //Adds together all the Lines of Code and then u
 		document.cookie = "points=" + points.toFixed(1);
 }, 1000);
 
+window.setInterval(function() {
+	document.getElementById("points").innerHTML = points.toFixed(1) + ' Lines of code';
+}, 100);
+
 window.setInterval(function() { //Saves game data every 15 seconds
 	localStorage.setItem("linesofcode", points);
 	localStorage.setItem("davids", davidTotal);
@@ -127,3 +137,7 @@ window.setInterval(function() { //Saves game data every 15 seconds
 	localStorage.setItem("nicoles", nicoleTotal);
 	console.log("Game Saved")
 }, 15000);
+
+/*
+----This section represents the Upgrades page of the javascript----
+*/
