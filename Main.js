@@ -23,6 +23,8 @@ function openTab(evt, pageName){
 var totalLPS = 0;
 var points = 0;
 var pointstext = document.getElementById("points");
+var clickStr = 1;
+var clickCost = 50;
 var davidPrice = 10;
 var davidTotal = 0;
 var davidLPS = 0.1;
@@ -37,7 +39,7 @@ var davidredbullUpgrade = false
 function loadSave() { //loads the saved values from local storage
 	if(localStorage.linesofcode) { //checks for a local save
 		savedPoints = localStorage.linesofcode;
-		points = parseInt(savedPoints);
+		points = parseInt(savedPoints); clickStr = parseInt(localStorage.clickStr); clickCost = parseInt(localStorage.clickCost);
 		loadDavids();
 		loadIzzys();
 		loadNicoles();
@@ -80,7 +82,7 @@ function loadNicoles() {
 }
 
 function addPoints() { //function for clicking
-	points = points + 1;
+	points = points + clickStr;
 	//console.log(getCookie("points"))l;
 	document.getElementById("points").innerHTML = points.toFixed(1) + ' Lines of code';
 }
@@ -162,5 +164,16 @@ function davidRedBull() {
 		for (i = 0; i < davidredbullElements.length; i++){
 			davidredbullElements[i].style.display = "none";
 		}
+	}
+}
+
+function clickHarder() {
+	
+	if (points >= clickCost) {
+		points = points - clickCost;
+		clickStr = clickStr + 1;
+		clickCost = clickCost*2.75;
+		localStorage.setItem("clickStr", clickStr); localStorage.setItem("clickCost", clickCost);
+		document.getElementById("clickCostDisplay").innerHTML = "Current level: " + clickStr.toFixed(1) + " Cost for next level: " + clickCost.toFixed(1);
 	}
 }
