@@ -1,4 +1,4 @@
-/*
+/* reorgonizing file structure
 ----basic layout javascript programming----
 */
 function openTab(evt, pageName){
@@ -41,10 +41,14 @@ function loadSave() { //loads the saved values from local storage
 		loadDavids();
 		loadIzzys();
 		loadNicoles();
+		setTimeout(function(){
+
+		}, 1000)
 	}
 	else {
 
 	}
+	document.getElementById("defaultOpen").click();
 }
 
 function loadDavids() { //updates the HTML elements related to David affter loading
@@ -163,4 +167,15 @@ function davidRedBull() {
 			davidredbullElements[i].style.display = "none";
 		}
 	}
+}
+
+
+/*
+----This section represents the gabby page of the javascript
+*/
+
+var gabbyJokes = new Array("Jokes go here")
+function gabbyJoke() {
+	var i = Math.floor((Math.random()*1));
+	document.getElementById("gabbyJokes").innerHTML = "Test " + gabbyJokes[0];
 }
