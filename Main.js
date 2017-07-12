@@ -23,6 +23,9 @@ function openTab(evt, pageName){
 var totalLPS = 0;
 var points = 0;
 var pointstext = document.getElementById("points");
+var clickStr = 1;
+var clickCost = 50;
+var refreshRateVar = 100;
 var davidPrice = 10;
 var davidTotal = 0;
 var davidLPS = 0.1;
@@ -37,7 +40,7 @@ var davidredbullUpgrade = false
 function loadSave() { //loads the saved values from local storage
 	if(localStorage.linesofcode) { //checks for a local save
 		savedPoints = localStorage.linesofcode;
-		points = parseInt(savedPoints);
+		points = parseInt(savedPoints); clickStr = parseInt(localStorage.clickStr); clickCost = parseInt(localStorage.clickCost);
 		loadDavids();
 		loadIzzys();
 		loadNicoles();
@@ -80,7 +83,7 @@ function loadNicoles() {
 }
 
 function addPoints() { //function for clicking
-	points = points + 1;
+	points = points + clickStr;
 	//console.log(getCookie("points"))l;
 	document.getElementById("points").innerHTML = points.toFixed(1) + ' Lines of code';
 }
@@ -124,11 +127,11 @@ window.setInterval(function() { //Adds together all the Lines of Code and then u
 		document.getElementById("codepersec").innerHTML = totalLPS.toFixed(1) + ' Lines per second'
 		document.getElementById("points").innerHTML = points.toFixed(1) + ' Lines of code';
 		document.cookie = "points=" + points.toFixed(1);
-}, 1000);
+}, 1000); // dont change this to anything other than 1000 lol
 
 window.setInterval(function() {
 	document.getElementById("points").innerHTML = points.toFixed(1) + ' Lines of code';
-}, 100);
+}, refreshRateVar);
 
 window.setInterval(function() { //Saves game data every 15 seconds
 	localStorage.setItem("linesofcode", points);
@@ -137,6 +140,7 @@ window.setInterval(function() { //Saves game data every 15 seconds
 	localStorage.setItem("nicoles", nicoleTotal);
 	console.log("Game Saved");
 }, 15000);
+
 
 /*
 ----This section represents the Upgrades page of the javascript----
@@ -163,4 +167,30 @@ function davidRedBull() {
 			davidredbullElements[i].style.display = "none";
 		}
 	}
+}
+
+function clickHarder() { // Upgrade click ability
+	
+	if (points >= clickCost) {
+		points = points - clickCost;
+		clickStr = clickStr + 1;
+		clickCost = clickCost*2.75;
+		localStorage.setItem("clickStr", clickStr); localStorage.setItem("clickCost", clickCost);
+		document.getElementById("clickCostDisplay").innerHTML = "Current level: " + clickStr.toFixed(1) + " Cost for next level: " + clickCost.toFixed(1);
+	}
+}
+
+/*
+	This section represents the functions for the options tab
+*/
+
+function resetGame() {
+	localStorage.clear();
+	location.reload();
+}
+
+function refreshRate() {
+	// hey should you use the same name for functions and variables? maybe
+	refreshRateVar = parseInt(document.getElementById("refreshRate").value);
+	document.getElementById("refreshRate").value;
 }
