@@ -1,7 +1,8 @@
-div.tabs {
+ div.tabs {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
+    width: 100%;
 }
 
 div.tabs button{
@@ -11,6 +12,7 @@ div.tabs button{
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
+    font-size: 18px;
     transition: 0.3s;
 }
 
@@ -24,9 +26,14 @@ div.tabs button:active {
 
 .tabcontent {
     display: none;
-    padding: 6px 12px;
+    padding: 12px 16px;
     border: 1px solid #ccc;
     border-top: none;
+    width: 100%;
+}
+/*
+.maincontent {
+    font-size: 20px;
 }
 
 .davidRedbull {
