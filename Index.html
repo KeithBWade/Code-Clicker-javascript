@@ -1,3 +1,66 @@
+
+<html>
+	<head>
+		<script src="Main.js"></script>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+		<title>CodeDay Clicker</title>
+	</head>
+	<body onload="loadSave()">
+		<div class="tabs">
+			<button class="tablinks" onclick="openTab(event, 'Main')">
+				Main Page
+			</button>
+			<button class="tablinks" onclick="openTab(event, 'Upgrades');checkUpgrades()">
+				Upgrades
+			</button>
+			<button class="tablinks" onclick="openTab(event, 'Options')">
+				Options
+			</button>
+		</div>
+		<div id="Main" class="tabcontent">
+			<p id="points">0 Lines of </p>
+			<p id="codepersec">0 Lines per second</p>
+			<button id="click" onmouseup="addPoints()">Click Me</button>
+			<br>
+			<button id="david" onclick="buyDavid()">Buy a David for 10 Lines of code</button>
+			<p id="davidAmmount">You have 0 Davids</p>
+			<p id="davidProduce">Writing 0 Lines of code per second</p>
+			<br>
+			<button id="izzy" onclick="buyIzzy()">Buy a Izzy for 100 Lines of code</button>
+			<p id="izzyAmmount">You have 0 Izzys</p>
+			<p id="izzyProduce">Writing 0 Lines of code per second</p>
+			<br>
+			<button id="nicole" onclick="buyNicole()">Buy a nicole for 1100 Lines of code</button>
+			<p id="nicoleAmmount">You have 0 nicoles</p>
+			<p id="nicoleProduce">Writing 0 Lines of code per second</p>
+			<br>
+		</div>
+		<div id="Upgrades" class="tabcontent">
+			<div id="clickUpgrades" class="upgrades">
+				<div id="clickStrength">
+					<button id="buyClickUpgrade" class="clickStrength" onclick="clickHarder()">Increase click strength</button>
+					<p id="clickCostDisplay" class="clickStrength"></p>
+				</div>
+			</div>
+			<div id="davidUpgrades" class="upgrades">
+				<div id="davidRedbull">
+					<button id="redbull" class="davidRedbull" onclick="davidRedBull()">Buy david redbull for 100 Lines of code</button>
+					<p class="davidRedbull">Makes david write twice as many lines of code per second</p>
+				</div>
+			</div>
+		</div>
+		<div id="Options" class="tabcontent">
+			<div id="mainOptions">
+				<button id="reset" class="resetGame" onclick="resetGame()"> Reset everything in the game </button>
+				<p>Careful! I'm pretty sure this button works!</p>
+				<p>Input refresh rate in ms. This does not slow or speed up line generation</p>
+				<input type="number" id="refreshRate" value=100>
+				<button onclick="refreshRate()">Update rate</button>
+			</div>
+		</div>
+	</body>
+</html>
+=======
 <html>
 	<head>
 		<script src="Main.js"></script>
@@ -53,3 +116,4 @@
 		</div>
 	</body>
 </html>
+
