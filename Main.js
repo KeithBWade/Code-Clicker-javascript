@@ -186,9 +186,14 @@ function clickHarder() { // Upgrade click ability
 */
 
 function resetGame() {
-	localStorage.clear();
-	resetVariables();
-	location.reload();
+	if(confirm("Do you want to reset the game?")){
+		localStorage.clear();
+		resetVariables();
+		location.reload();
+	}
+	else {
+
+	}
 }
 
 function resetVariables(){
