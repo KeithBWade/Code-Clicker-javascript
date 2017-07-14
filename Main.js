@@ -45,6 +45,7 @@ function loadSave() { //loads the saved values from local storage
 		loadDavids();
 		loadIzzys();
 		loadNicoles();
+		openTab(event, 'Main')
 	}
 	else {
 
