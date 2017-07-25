@@ -18,7 +18,7 @@ function openTab(evt, pageName){
 	evt.currentTarget.className += " active";
 }
 /*
-----Beginign of MainPage section of the javascript----
+----Beginning of MainPage section of the javascript----
 */
 //Initialize all global variables that are relevent to the game
 var totalLPS = 0;
